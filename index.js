@@ -29,10 +29,16 @@ console.log(processFirstItem(['foo','bar'],function(str){return str+str}));
   
   1. What is the difference between counter1 and counter2?
   
+  Counter1 has a variable that cannot be called from outside of it, which is otherwise known as a private variable. Counter2 has a global variable.
+
   2. Which of the two uses a closure? How can you tell?
+
+  Counter1 has the closure because it references the counterMaker variable used above it. 
   
   3. In what scenario would the counter1 code be preferable? In what scenario would 
      counter2 be better?  
+
+     You would use counter1 when you would want to use its function only one time, and the second counter if you only wanted to use one function. 
 */
 
 // counter1 code
