@@ -107,7 +107,10 @@ Use the getInningScore() function below to do the following:
   2. Return an object with a score for home and a score for away that populates from invoking the inning callback function */
 
 function getInningScore(inningcb) {
-  inningcb();
+
+  let homeScr = inningcb();
+  let awayScr = inningcb();
+
   return {
     "Home": homeScr,
     "Away": awayScr
@@ -156,12 +159,26 @@ Use the scoreboard function below to do the following:
 ]  
   */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(getInningScorecb, inningcb, number) {
+  const gameScore = [];
+  let totalHome = 0;
+  let totalAway = 0;
+  for (let i = 1; i < number; i++) {
+    let homeScr = inningcb();
+    let awayScr = inningcb();
+    totalHome += homeScr;
+    totalAway += awayScr;
+    gameScore.push(`Inning ${i}: Away ${awayScr} - Home ${homeScr}`)
+  }
+  if (totalHome === totalAway) {
+    gameScore.push(`This game will require extra innings: Away ${totalAway} - Home ${totalHome}`)
+  } else {
+    gameScore.push(`Final Score: Away ${totalAway} - Home ${totalHome}`)
+  }
+  return gameScore;
 }
 
-
-
+console.log(scoreboard(getInningScore, inning, 9))
 
 /* 🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑 */
 function foo() {
